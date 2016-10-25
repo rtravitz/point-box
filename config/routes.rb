@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root to: "sessions#index"
-  resources :sessions, only: [:index]
+  root to: "homepage#index"
+  resources :homepage, only: [:index]
   resources :users
+
+  get '/login', to: "sessions#login"
+  post '/login', to: "sessions#authenticate"
 end
