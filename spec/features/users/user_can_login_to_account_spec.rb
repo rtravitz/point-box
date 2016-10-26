@@ -6,7 +6,7 @@ describe "When users visit the home page" do
     visit "/"
     click_link "Login"
     fill_in "session_email", with: user.email
-    fill_in "session_password", with: user.password_digest
+    fill_in "session_password", with: user.password
     click_button "Login"
 
     expect(page).to have_content "Hi, #{user.name}!"
