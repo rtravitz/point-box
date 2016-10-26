@@ -13,7 +13,7 @@ describe "When users visit the home page" do
     expect(page).to have_content "Hi, Ryan!"
   end
 
-  scenario "they must try again if passwords don't match" do
+  scenario "they must try again if they enter incorrect information" do
     visit "/"
     click_link "Create Account"
     fill_in "user_name", with: "Ryan"
