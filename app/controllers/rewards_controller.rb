@@ -31,6 +31,12 @@ class RewardsController < ApplicationController
     end
   end
 
+  def destroy
+    @reward = Reward.find(params[:id])
+    @reward.delete
+    redirect_to rewards_path
+  end
+
   private
 
   def reward_params

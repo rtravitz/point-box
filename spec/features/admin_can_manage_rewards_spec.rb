@@ -28,4 +28,16 @@ feature "When an admin is logged in" do
 
     expect(page).to have_content("A day with Regis Philbin - 25")
   end
+
+  scenario "they can delete an existing reward" do
+    user = create(:user)
+    user.update(admin: true)
+    reward = create(:reward)
+    login_actions(user)
+
+    visit rewards_path
+    click_link("Delete")
+
+    expect(page).to_not have_content("#{reward.name} - #{reward.cost}")
+  end
 end
