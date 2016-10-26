@@ -7,8 +7,21 @@ describe "When users visit the home page" do
     fill_in "user_name", with: "Ryan"
     fill_in "user_email", with: "rtravitz@gmail.com"
     fill_in "user_password", with: "password"
+    fill_in "user_password_confirmation", with: "password"
     click_button "Create Account"
 
     expect(page).to have_content "Hi, Ryan!"
+  end
+
+  scenario "they must try again if passwords don't match" do
+    visit "/"
+    click_link "Create Account"
+    fill_in "user_name", with: "Ryan"
+    fill_in "user_email", with: "rtravitz@gmail.com"
+    fill_in "user_password", with: "password"
+    fill_in "user_password_confirmation", with: "notpassword"
+    click_button "Create Account"
+
+    expect(page).to have_content "Incorrect information. Please try again."
   end
 end

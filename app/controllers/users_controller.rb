@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
+      flash[:failed] = "Incorrect information. Please try again."
       render :new
     end
   end
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
 end

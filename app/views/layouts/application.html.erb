@@ -7,6 +7,14 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <% flash.each do |key, value| %>
+    <div class=alert-<%= key %>>
+      <%= value %>
+    </div>
+  <% end %>
+  <% if current_user %>
+    <%= link_to "Logout", logout_path, method: :delete %>
+  <% end %>
 
   <body>
     <%= yield %>

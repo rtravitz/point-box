@@ -8,10 +8,13 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      #either doesn't exist or password is incorrect
+      render :login
     end
   end
 
   def logout
+    session.delete(:user_id)
+    flash[:success] = "Successfully logged out!"
+    redirect_to login_path
   end
 end
