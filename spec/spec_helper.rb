@@ -106,3 +106,12 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+
+def login_actions(user)
+  visit "/"
+  click_link "Login"
+  fill_in "session_email", with: user.email
+  fill_in "session_password", with: user.password
+  click_button "Login"
+end
