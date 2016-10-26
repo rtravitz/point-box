@@ -1,2 +1,4 @@
 <h2>Hi, <%= @user.name %>!</h2>
+<p>Current points: <%= @user.points %></p>
+<p>Redeemed points: <%= @user.redeemed_points %></p>
 <%= link_to "Add Reward", new_reward_path %>
