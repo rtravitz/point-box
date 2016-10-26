@@ -1,4 +1,6 @@
 class RewardsController < ApplicationController
+  before_action :set_reward, only: [:edit, :update, :destroy]
+
   def index
     @rewards = Reward.all
   end
@@ -18,11 +20,9 @@ class RewardsController < ApplicationController
   end
 
   def edit
-    @reward = Reward.find(params[:id])
   end
 
   def update
-    @reward = Reward.find(params[:id])
     if @reward.update(reward_params)
       redirect_to rewards_path
     else
@@ -32,7 +32,6 @@ class RewardsController < ApplicationController
   end
 
   def destroy
-    @reward = Reward.find(params[:id])
     @reward.delete
     redirect_to rewards_path
   end
@@ -41,5 +40,9 @@ class RewardsController < ApplicationController
 
   def reward_params
     params.require(:reward).permit(:name, :cost, :image_link)
+  end
+
+  def set_reward
+    @reward = Reward.find(params[:id])
   end
 end
