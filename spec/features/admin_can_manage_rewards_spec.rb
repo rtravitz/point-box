@@ -13,4 +13,19 @@ feature "When an admin is logged in" do
 
     expect(page).to have_content("Archer - 10")
   end
+
+  scenario "they can edit an existing reward" do
+    user = create(:user)
+    user.update(admin: true)
+    reward = create(:reward)
+    login_actions(user)
+
+    visit rewards_path
+    click_link("Edit")
+    fill_in "reward_name", with: "A day with Regis Philbin"
+    fill_in "reward_cost", with: 25
+    click_button("Update Reward")
+
+    expect(page).to have_content("A day with Regis Philbin - 25")
+  end
 end

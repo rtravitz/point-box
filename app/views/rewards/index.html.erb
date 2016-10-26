@@ -1,6 +1,8 @@
+<h2>All Rewards</h2>
 <% @rewards.each do |reward| %>
   <div>
      <p><%= reward.name %> - <%= reward.cost %></p>
      <img src="<%= reward.image_link %>" alt="<%= reward.name %> image" class="reward-img" />
+     <%= link_to "Edit", edit_reward_path(reward) %>
   </div>
 <% end %>
