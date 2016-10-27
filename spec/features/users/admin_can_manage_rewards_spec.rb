@@ -2,9 +2,10 @@ require 'rails_helper'
 
 feature "When an admin is logged in" do
   scenario "they can create a new reward" do
-    user = User.create(name: "Ryan", email: "rtravitz@gmail.com", password: "password", admin: true)
-    login_actions(user)
+    admin = User.create(name: "Ryan", email: "rtravitz@gmail.com", password: "password", role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     
+    visit admin_user_path(admin)
     click_link("Add Reward")
     fill_in "reward_name", with: "Archer"
     fill_in "reward_cost", with: 10
@@ -15,12 +16,11 @@ feature "When an admin is logged in" do
   end
 
   scenario "they can edit an existing reward" do
-    user = create(:user)
-    user.update(admin: true)
+    admin = User.create(name: "Ryan", email: "rtravitz@gmail.com", password: "password", role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     reward = create(:reward)
-    login_actions(user)
 
-    visit rewards_path
+    visit admin_rewards_path
     click_link("Edit")
     fill_in "reward_name", with: "A day with Regis Philbin"
     fill_in "reward_cost", with: 25
@@ -30,12 +30,11 @@ feature "When an admin is logged in" do
   end
 
   scenario "they can delete an existing reward" do
-    user = create(:user)
-    user.update(admin: true)
+    admin = User.create(name: "Ryan", email: "rtravitz@gmail.com", password: "password", role: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     reward = create(:reward)
-    login_actions(user)
 
-    visit rewards_path
+    visit admin_rewards_path
     click_link("Delete")
 
     expect(page).to_not have_content("#{reward.name} - #{reward.cost}")

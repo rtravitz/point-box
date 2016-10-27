@@ -3,5 +3,6 @@ class User < ActiveRecord::Base
   validates :name, :email, presence: true
   validates :email, uniqueness: true
   validates_confirmation_of :password
+  enum role: [:default, :admin]
 
 end
