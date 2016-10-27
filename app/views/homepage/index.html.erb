@@ -1,5 +1,11 @@
-<%= link_to "Create Account", new_user_path %>
-<% unless current_user %>
-  <%= link_to "Login", login_path %>
-<% end %>
-
+<div class="jumbotron splash-image">
+  <div class="container">
+    <h1 class="page-header">Points Box</h1>    
+    <p>Now with more knights and castles.</p>
+    <%= link_to "Create Account", new_user_path, class: "btn btn-primary btn-lg" %>
+    <% unless current_user %>
+      <%= link_to "Login", login_path, class: "btn btn-primary btn-lg" %>
+    <% end %>
+  </div>
+</div>
+<h2 class="text-center"><em>Here are a few of the great rewards you could earn!</em></h2>
