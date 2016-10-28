@@ -1,4 +1,26 @@
-h2 {
+html, body {
+  background: linear-gradient(180deg, rgb(199, 168, 188), rgb(112, 35, 183));
+  background-size: cover;
+  height: 100%;
+  margin: 0;
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+#login-box {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
+
+.front-page h2 {
+  color: white;
+}
+
+h1 {
   color: #7023b7;
 }
 .splash-image {
@@ -12,7 +34,6 @@ h2 {
 
 .jumbotron p {
   color: white;
-  text-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
 
 .jumbotron h1 {

@@ -1,8 +1,15 @@
-<%= form_for(:session, url: login_path) do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit "Login" %>
-<% end %>
+<div id="login-box" class="container well col-md-6">
+  <h1 class="text-center">Enter the Kingdom</h1>
+  <%= form_for(:session, url: login_path) do |f| %>
+    <div class="form-group"> 
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group"> 
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <%= f.submit "Login", class: "btn btn-default btn-lg" %>
+  <% end %>
+</div>
 
