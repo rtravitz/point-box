@@ -5,8 +5,15 @@ html, body {
   margin: 0;
 }
 
+.row-centered {
+  text-align: center;
+}
+
 .col-centered {
+  display: inline-block;
   float: none;
+  text-align: left;
+  margin-right: -4px;
   margin: 0 auto;
 }
 
@@ -23,6 +30,12 @@ html, body {
 h1 {
   color: #7023b7;
 }
+
+.reward-img {
+  height: 100px;
+  width: 100px;
+}
+
 .splash-image {
   background-image: url("https://images.unsplash.com/photo-1436466420246-f4de0a08b200?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=33578f214263389edc76d161e4a82164");
   background-size: cover;
@@ -65,7 +78,7 @@ h1 {
 }
 
 .well {
-  background: white;
+  background: #f2e6ff;
   border-color: #7023b7;
 }
 

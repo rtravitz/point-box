@@ -2,9 +2,4 @@
 <p>Current points: <%= @user.points %></p>
 <p>Redeemed points: <%= @user.redeemed_points %></p>
 
-<% @rewards.each do |reward| %>
-  <div class="well text-center">
-    <h5><%= reward.name %> - <%= reward.cost %></h5>
-    <img src="<%= reward.image_link %>" alt="<%= reward.name %>" class="reward-img" />
-  </div>
-<% end %>
+<%= render partial: "rewards/rewards" %>
