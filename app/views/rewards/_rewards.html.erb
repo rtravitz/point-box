@@ -1,6 +1,5 @@
-<div class="col-md-3"></div>
 <% @rewards.each do |reward| %>
-  <div class="well col-md-2">
+  <div class="well col-md-2 text-center">
     <h5><%= reward.name %> - <%= reward.cost %></h5>
     <img src="<%= reward.image_link %>" alt="<%= reward.name %>" class="reward-img" />
   </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027202401) do
+ActiveRecord::Schema.define(version: 20161030212638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,4 +30,13 @@ ActiveRecord::Schema.define(version: 20161027202401) do
     t.integer "role",            default: 0
   end
 
+  create_table "users_rewards", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "reward_id"
+    t.index ["reward_id"], name: "index_users_rewards_on_reward_id", using: :btree
+    t.index ["user_id"], name: "index_users_rewards_on_user_id", using: :btree
+  end
+
+  add_foreign_key "users_rewards", "rewards"
+  add_foreign_key "users_rewards", "users"
 end

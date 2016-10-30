@@ -1,5 +1,35 @@
-<h2>Hi, <%= @user.name %>!</h2>
-<p>Current points: <%= @user.points %></p>
-<p>Redeemed points: <%= @user.redeemed_points %></p>
-
-<%= render partial: "rewards/rewards" %>
+<div class="well">
+  <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-default pull-right" %>
+  <h2>Hi, <%= @user.name %>!</h2>
+</div>
+<div class="container">
+  <div class="row col-md-4 well">
+    <p>Current points: <%= @user.points %></p>
+    <p>Redeemed points: <%= @user.redeemed_points %></p>
+  </div>
+  <div class="row"></div>
+  <div class="row">
+    <hr>
+    <div id="user_rewards">
+      <h3>Your Rewards</h3>
+      <% @user.rewards.each do |reward| %>
+        <div class="well col-md-2 text-center">
+          <h5><%= reward.name %> - <%= reward.cost %></h5>
+          <img src="<%= reward.image_link %>" alt="<%= reward.name %>" class="reward-img" />
+        </div>
+      <% end %>
+    </div>
+    <div class="row"></div>
+    <hr>
+    <h3>Possible Rewards</h3>
+    <div id="all_rewards">
+      <% @user.unowned_rewards.each do |reward| %>
+        <div class="well col-md-2 text-center">
+          <h5><%= reward.name %> - <%= reward.cost %></h5>
+          <img src="<%= reward.image_link %>" alt="<%= reward.name %>" class="reward-img" />
+          <%= link_to "Buy", user_reward_path(current_user, reward), class: "btn btn-default"  %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <p class="navbar-brand"><%= link_to "PointBox", admin_user_path(current_user) %></p>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Rewards", admin_rewards_path %></li>
+        <li><%= link_to "Add Reward", new_admin_reward_path %></li>
+        <li><%= link_to "Assign Points", admin_assign_points_path %></li>
+        <li><%= link_to "Logout", logout_path, method: :delete, class: "pull-right" %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+

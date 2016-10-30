@@ -1,15 +1,17 @@
-<%= form_for [:admin, @reward] do |f| %>
-  <div class="form-group"> 
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="form-group"> 
-    <%= f.label :cost %>
-    <%= f.number_field :cost, class: "form-control" %>
-  </div>
-  <div class="form-group"> 
-    <%= f.label :image_link %>
-    <%= f.text_field :image_link, class: "form-control" %>
-  </div>
-  <%= f.submit class: "btn btn-default" %>
-<% end %>
+<div class="container well">
+  <%= form_for [:admin, @reward] do |f| %>
+    <div class="form-group"> 
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group"> 
+      <%= f.label :cost %>
+      <%= f.number_field :cost, class: "form-control" %>
+    </div>
+    <div class="form-group"> 
+      <%= f.label :image_link %>
+      <%= f.text_field :image_link, class: "form-control" %>
+    </div>
+    <%= f.submit class: "btn btn-default" %>
+  <% end %>
+</div>

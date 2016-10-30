@@ -1,9 +1,14 @@
+<%= render partial: "navbar/navbar" %>
+<div class="container">
 <h2>All Rewards</h2>
 <% @rewards.each do |reward| %>
-  <div>
+  <div class="well col-md-2 text-center">
      <p><%= reward.name %> - <%= reward.cost %></p>
-     <img src="<%= reward.image_link %>" alt="<%= reward.name %> image" class="reward-img" />
-     <%= link_to "Edit", edit_admin_reward_path(reward) %>
-     <%= link_to "Delete", admin_reward_path(reward), method: "delete" %>
+     <img src="<%= reward.image_link %>" alt="<%= reward.name %> image" class="reward-img" /><br>
+     <div class="btn-group">
+       <%= link_to "Edit", edit_admin_reward_path(reward), class: "btn btn-success" %>
+       <%= link_to "Delete", admin_reward_path(reward), method: "delete", class: "btn btn-danger" %>
+     </div>
   </div>
 <% end %>
+</div>

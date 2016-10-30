@@ -6,7 +6,11 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      if @user.admin?
+        redirect_to admin_user_path(@user)
+      else
+        redirect_to user_path(@user)
+      end
     else
       flash[:error] = "Incorrect login information. Please try again."
       render :login
@@ -16,6 +20,6 @@ class SessionsController < ApplicationController
   def logout
     session.delete(:user_id)
     flash[:success] = "Successfully logged out!"
-    redirect_to login_path
+    redirect_to homepage_index_path
   end
 end
